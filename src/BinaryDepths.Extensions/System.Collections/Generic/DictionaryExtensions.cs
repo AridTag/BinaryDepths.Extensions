@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BinaryDepths.Extensions.System.Collections.Generic
+namespace System.Collections.Generic
 {
     public static class DictionaryExtensions
     {

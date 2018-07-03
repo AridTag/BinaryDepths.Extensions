@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace BinaryDepths.Extensions.System.Threading
+namespace System.Threading
 {
     public static class CancellationTokenExtensions
     {
