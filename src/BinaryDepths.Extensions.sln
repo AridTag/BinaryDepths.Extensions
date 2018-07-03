@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryDepths.Extensions", "BinaryDepths.Extensions\BinaryDepths.Extensions.csproj", "{2D2D957A-9968-4FDC-A827-9C5C413935D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D2D957A-9968-4FDC-A827-9C5C413935D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D2D957A-9968-4FDC-A827-9C5C413935D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D2D957A-9968-4FDC-A827-9C5C413935D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D2D957A-9968-4FDC-A827-9C5C413935D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED5F814E-81FB-4DA8-B43A-A37449F00C54}
+	EndGlobalSection
+EndGlobal
