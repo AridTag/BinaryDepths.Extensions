@@ -9,6 +9,7 @@
     <PackageProjectUrl>https://github.com/AridTag/BinaryDepths.Extensions</PackageProjectUrl>
     <Authors>Jonathan Clark</Authors>
     <Company />
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
