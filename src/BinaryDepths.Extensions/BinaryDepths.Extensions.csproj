@@ -5,6 +5,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Various extension methods that I have found useful over the years</Description>
+    <PackageLicenseUrl>https://github.com/AridTag/BinaryDepths.Extensions/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/AridTag/BinaryDepths.Extensions</PackageProjectUrl>
+    <Authors>Jonathan Clark</Authors>
+    <Company />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
