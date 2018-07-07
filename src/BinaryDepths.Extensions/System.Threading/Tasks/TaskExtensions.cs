@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace System.Threading.Tasks
+﻿namespace System.Threading.Tasks
 {
     public static class TaskExtensions
     {
@@ -22,7 +17,7 @@ namespace System.Threading.Tasks
             using (cancellationToken.Register(s => ((TaskCompletionSource<bool>)s).TrySetResult(true), tcs))
             {
                 // If the task waited on is the cancellation token...
-                if (task != await Task.WhenAny(task, tcs.Task))
+                if (task != await Task.WhenAny(task, tcs.Task).ConfigureAwait(false))
                     throw new OperationCanceledException(cancellationToken);
             }
 
