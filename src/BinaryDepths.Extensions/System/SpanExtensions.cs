@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace BinaryDepths.Extensions.System
+namespace System
 {
 #if NETCORE2_1
     public static class SpanExtensions
