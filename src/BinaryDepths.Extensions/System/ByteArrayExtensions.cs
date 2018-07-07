@@ -41,10 +41,20 @@ namespace System
 #if NETCORE2_1
         public static T ToStruct<T>(this Span<byte> bytes) where T : struct
         {
-            return MemoryMarshal.Read<T>(bytes);
+            return ToStruct<T>((ReadOnlySpan<byte>)bytes);
         }
 
         public static T[] ToStructArray<T>(this Span<byte> bytes, uint numEntries) where T : struct
+        {
+            return ToStructArray<T>((ReadOnlySpan<byte>)bytes, numEntries);
+        }
+
+        public static T ToStruct<T>(this ReadOnlySpan<byte> bytes) where T : struct
+        {
+            return MemoryMarshal.Read<T>(bytes);
+        }
+
+        public static T[] ToStructArray<T>(this ReadOnlySpan<byte> bytes, uint numEntries) where T : struct
         {
             var sizeOfT = Marshal.SizeOf<T>();
             var retVal = new T[numEntries];
