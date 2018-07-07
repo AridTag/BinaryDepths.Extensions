@@ -37,12 +37,25 @@ namespace System
         /// <summary>
         /// Returns a slice of length starting at 0
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="span"></param>
         /// <param name="length"></param>
         /// <returns></returns>
         public static Span<T> Take<T>(this Span<T> span, int length)
         {
             return span.Slice(0, length);
+        }
+
+        /// <summary>
+        /// Returns a span without the first length elements
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="span"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static Span<T> Skip<T>(this Span<T> span, int length)
+        {
+            return span.Slice(length);
         }
     }
 #endif
