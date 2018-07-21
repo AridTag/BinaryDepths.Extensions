@@ -22,7 +22,7 @@ namespace System.IO
                 var readBuffer = new byte[4096];
                 var bytesReadThisBuffer = 0;
 
-                var bytesRead = stream.Read(readBuffer, bytesReadThisBuffer, readBuffer.Length - bytesReadThisBuffer);
+                var bytesRead = stream.Read(readBuffer, bytesReadThisBuffer, readBuffer.Length);
                 while (bytesRead > 0)
                 {
                     bytesReadThisBuffer += bytesRead;
@@ -33,6 +33,7 @@ namespace System.IO
                         if (nextByte != -1)
                         {
                             byteList.AddRange(readBuffer);
+                            byteList.Add((byte)nextByte);
                             bytesReadThisBuffer = 0;
                         }
                     }
