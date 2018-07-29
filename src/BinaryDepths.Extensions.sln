@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryDepths.Extensions", "BinaryDepths.Extensions\BinaryDepths.Extensions.csproj", "{2D2D957A-9968-4FDC-A827-9C5C413935D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryDepths.Extensions.Tests", "BinaryDepths.Extensions.Tests\BinaryDepths.Extensions.Tests.csproj", "{6A123B05-C286-416C-8D6B-7FB16F38F183}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryDepths.Extensions.Tests", "BinaryDepths.Extensions.Tests\BinaryDepths.Extensions.Tests.csproj", "{6A123B05-C286-416C-8D6B-7FB16F38F183}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,5 +27,16 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ED5F814E-81FB-4DA8-B43A-A37449F00C54}
+	EndGlobalSection
+	GlobalSection(AutomaticVersions) = postSolution
+		UpdateAssemblyVersion.Release|Any CPU = True
+		UpdateAssemblyFileVersion.Release|Any CPU = True
+		UpdateAssemblyInfoVersion.Release|Any CPU = True
+		AssemblyVersionSettings.Release|Any CPU = None.IncrementOnDemand.IncrementWithResetOnIncrease.None
+		AssemblyFileVersionSettings.Release|Any CPU = None.IncrementOnDemand.IncrementWithResetOnIncrease.None
+		AssemblyInfoVersionSettings.Release|Any CPU = None.IncrementOnDemand.IncrementWithResetOnIncrease.None
+		UpdatePackageVersion.Release|Any CPU = False
+		AssemblyInfoVersionType.Release|Any CPU = SettingsVersion
+		InheritWinAppVersionFrom.Release|Any CPU = None
 	EndGlobalSection
 EndGlobal
