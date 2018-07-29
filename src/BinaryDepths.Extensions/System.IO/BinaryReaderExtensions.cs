@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace BinaryDepths.Extensions.System.IO
+namespace System.IO
 {
     public static class BinaryReaderExtensions
     {
@@ -42,7 +42,7 @@ namespace BinaryDepths.Extensions.System.IO
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        public static string ReadString(this BinaryReader reader)
+        public static string ReadZString(this BinaryReader reader)
         {
             var next = reader.Read();
             if (next == -1)
