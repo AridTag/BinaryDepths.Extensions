@@ -6,20 +6,31 @@ namespace System.IO
 {
     public static class StreamExtensions
     {
-        public static byte[] ToByteArray(this Stream stream, int minimumSize = 1024)
+        /// <summary>
+        /// Reads the contents of the stream into a byte[]
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="fromCurrentPosition">
+        /// <para>true to begin reading from the current stream position.</para>
+        /// <para>false to begin reading from the start of the stream if the stream supports seeking.</para>
+        /// </param>
+        /// <returns>
+        /// The contents of the stream as a byte[]
+        /// </returns>
+        public static byte[] ToByteArray(this Stream stream, bool fromCurrentPosition = true)
         {
             long originalPosition = 0;
-            if (stream.CanSeek)
+            if (!fromCurrentPosition && stream.CanSeek)
             {
                 originalPosition = stream.Position;
-                stream.Position = 0;
+                stream.Seek(0, SeekOrigin.Begin);
             }
 
             try
             {
-                var byteList = new List<byte>(minimumSize);
-
-                var readBuffer = new byte[4096];
+                const int bufferSize = 1024;
+                var byteList = new List<byte>(bufferSize);
+                var readBuffer = new byte[bufferSize];
                 var bytesReadThisBuffer = 0;
 
                 var bytesRead = stream.Read(readBuffer, bytesReadThisBuffer, readBuffer.Length);
@@ -43,15 +54,17 @@ namespace System.IO
 
                 // Scoop up any overflow
                 if (bytesReadThisBuffer > 0)
+                {
                     byteList.AddRange(readBuffer.Take(bytesReadThisBuffer));
+                }
 
                 return byteList.ToArray();
             }
             finally
             {
-                if (stream.CanSeek)
+                if (!fromCurrentPosition && stream.CanSeek)
                 {
-                    stream.Position = originalPosition;
+                    stream.Seek(originalPosition, SeekOrigin.Begin);
                 }
             }
         }
