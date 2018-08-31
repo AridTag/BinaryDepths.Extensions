@@ -6,15 +6,28 @@ namespace System
 {
     public static class Int32Extensions
     {
-        public static int GetNearestPower2Ceiling(this int num)
+        /// <summary>
+        /// Gets the next greatest power of 2.
+        /// </summary>
+        /// <remarks>
+        /// It is recommended to use the uint version of this method
+        /// </remarks>
+        /// <param name="num"></param>
+        /// <returns>The next greatest power of 2</returns>
+        public static int GetNextPower2(this int num)
         {
             if (num < 0)
                 return 0;
 
-            return (int)GetNearestPower2Ceiling((uint)num);
+            return (int)GetNextPower2((uint)num);
         }
 
-        public static uint GetNearestPower2Ceiling(this uint num)
+        /// <summary>
+        /// Gets the next greatest power of 2.
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns>The next greatest power of 2</returns>
+        public static uint GetNextPower2(this uint num)
         {
             --num;
             num |= num >> 1;
