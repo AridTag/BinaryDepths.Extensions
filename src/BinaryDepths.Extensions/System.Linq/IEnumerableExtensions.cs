@@ -30,6 +30,7 @@ namespace System.Linq
         /// Asked by: theringostarrs http://stackoverflow.com/users/105916/theringostarrs
         /// Answer by: meustrus http://stackoverflow.com/users/710377/meustrus
         /// </remarks>
+        /// <exception cref="InvalidOperationException">Thrown when the sequence contains no elements</exception>
         /// <typeparam name="TObject"></typeparam>
         /// <typeparam name="TR"></typeparam>
         /// <param name="sequence"></param>
