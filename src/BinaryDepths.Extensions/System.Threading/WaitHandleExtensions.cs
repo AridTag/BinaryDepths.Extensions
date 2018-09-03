@@ -21,7 +21,7 @@ namespace System.Threading
         }
 
         /// <summary>
-        /// Creates a TPL Task that is marked as completed when a <see cref="WaitHandle"/> is signaled.
+        /// Creates a Task that is marked as completed when the specified <see cref="WaitHandle"/> is signaled.
         /// </summary>
         /// <param name="handle">The handle whose signal triggers the task to be completed.</param>
         /// <returns>A Task that is completed after the handle is signaled.</returns>
@@ -42,9 +42,11 @@ namespace System.Threading
                 {
                     tcs.SetResult(null);
 
-                    // We take a lock here to make sure the outer method has completed setting the local variable callbackHandle.
                     lock (localVariableInitLock)
                     {
+                        // We take a lock here to make sure the outer method
+                        // has completed setting the local variable callbackHandle.
+                        // ReSharper disable once AccessToModifiedClosure
                         callbackHandle?.Unregister(null);
                     }
                 }

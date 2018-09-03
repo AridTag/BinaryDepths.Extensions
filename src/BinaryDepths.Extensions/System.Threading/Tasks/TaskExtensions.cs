@@ -3,25 +3,31 @@
     public static class TaskExtensions
     {
         /// <summary>
-        /// Allows the await call itself to be cancelled. Useful for timing out a potentially never ending task
+        /// Allows the await call itself to be cancelled. Useful for timing out the wait for a potentially misbehaving task
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="task"></param>
         /// <param name="cancellationToken"></param>
+        /// <exception cref="OperationCanceledException">Thrown when the CancellationToken is canceled</exception>
         /// <returns></returns>
         public static async Task<T> WithWaitCancellation<T>(this Task<T> task, CancellationToken cancellationToken)
         {
-            var tcs = new TaskCompletionSource<bool>();
-
-            // Register with the cancellation token.
-            using (cancellationToken.Register(s => ((TaskCompletionSource<bool>)s).TrySetResult(true), tcs))
+            void OnCancelledCallback(object state)
             {
-                // If the task waited on is the cancellation token...
-                if (task != await Task.WhenAny(task, tcs.Task).ConfigureAwait(false))
-                    throw new OperationCanceledException(cancellationToken);
+                var source = (TaskCompletionSource<bool>)state;
+                source.TrySetResult(true);
             }
-
-            // Wait for one or the other to complete.
+            
+            var completionSource = new TaskCompletionSource<bool>();
+            using (cancellationToken.Register(OnCancelledCallback, completionSource))
+            {
+                var completedTask = await Task.WhenAny(task, completionSource.Task).ConfigureAwait(false);
+                if (completedTask == completionSource.Task)
+                {
+                    throw new OperationCanceledException(cancellationToken);
+                }
+            }
+            
             return await task;
         }
     }
