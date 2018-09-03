@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.IO;
 using System.Linq;
 
 namespace System.Reflection
@@ -58,6 +59,24 @@ namespace System.Reflection
             }
 
             return loadableTypes;
+        }
+
+        /// <summary>
+        /// Gets the Stream for the embedded resource with the given name
+        /// </summary>
+        /// <param name="assembly"></param>
+        /// <param name="resourceName"></param>
+        /// <returns>The resource stream</returns>
+        /// <exception cref="ArgumentException">Thrown if the resource cannot be found in the assembly</exception>
+        public static Stream GetEmbeddedResourceStream(this Assembly assembly, string resourceName)
+        {
+            Contract.Requires(assembly != null, "The assembly cannot be null");
+            Contract.Requires(!string.IsNullOrWhiteSpace(resourceName), $"{nameof(resourceName)} must not be null or whitespace");
+            
+            if (!assembly.GetManifestResourceNames().Contains(resourceName))
+                throw new ArgumentException($"Unable to load embedded resource.{Environment.NewLine}{assembly.FullName}{Environment.NewLine}{resourceName}");
+
+            return assembly.GetManifestResourceStream(resourceName);
         }
     }
 }
