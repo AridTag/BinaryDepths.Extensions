@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Reflection;
 
-namespace System
+namespace System.Reflection
 {
     public static class AssemblyExtensions
     {
