@@ -22,7 +22,8 @@ namespace System.Reflection
         /// Used Answer by: sweetfa https://stackoverflow.com/users/490614/sweetfa
         /// </remarks>
         /// <example>
-        /// typeof(IEntityConfiguration).Assembly.GetLoadableTypes(type => typeof(IEntityConfiguration).IsAssignableFrom(type))
+        /// Get all types that can be assigned to IEntityConfiguration:
+        /// <code>typeof(IEntityConfiguration).Assembly.GetLoadableTypes(type => typeof(IEntityConfiguration).IsAssignableFrom(type))</code>
         /// </example>
         public static IList<Type> GetLoadableTypes(this Assembly assembly, Predicate<Type> predicate = null)
         {
