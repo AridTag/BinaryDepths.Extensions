@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Runtime.InteropServices;
 
-namespace System
+namespace BinaryDepths.Extensions
 {
     public static class ByteArrayExtensions
     {

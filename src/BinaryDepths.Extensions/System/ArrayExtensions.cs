@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace System
+namespace BinaryDepths.Extensions
 {
     public static class ArrayExtensions
     {

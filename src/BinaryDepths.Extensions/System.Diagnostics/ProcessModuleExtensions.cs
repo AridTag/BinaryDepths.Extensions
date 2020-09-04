@@ -1,6 +1,7 @@
+using System.Diagnostics;
 using System.IO;
 
-namespace System.Diagnostics
+namespace BinaryDepths.Extensions
 {
     public static class ProcessModuleExtensions
     {

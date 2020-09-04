@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 
-namespace System.Threading
+namespace BinaryDepths.Extensions
 {
     public static class CancellationTokenExtensions
     {

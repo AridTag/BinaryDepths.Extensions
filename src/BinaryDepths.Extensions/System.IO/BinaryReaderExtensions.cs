@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace System.IO
+namespace BinaryDepths.Extensions
 {
     public static class BinaryReaderExtensions
     {

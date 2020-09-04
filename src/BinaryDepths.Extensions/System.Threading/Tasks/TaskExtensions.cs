@@ -1,4 +1,8 @@
-﻿namespace System.Threading.Tasks
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace BinaryDepths.Extensions
 {
     public static class TaskExtensions
     {

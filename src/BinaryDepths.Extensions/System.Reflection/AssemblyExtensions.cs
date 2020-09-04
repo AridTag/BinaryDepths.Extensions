@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
-namespace System.Reflection
+namespace BinaryDepths.Extensions
 {
     public static class AssemblyExtensions
     {
