@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
-namespace System.Reflection
+namespace BinaryDepths.Extensions
 {
     public static class AssemblyExtensions
     {
@@ -22,7 +24,8 @@ namespace System.Reflection
         /// Used Answer by: sweetfa https://stackoverflow.com/users/490614/sweetfa
         /// </remarks>
         /// <example>
-        /// typeof(IEntityConfiguration).Assembly.GetLoadableTypes(type => typeof(IEntityConfiguration).IsAssignableFrom(type))
+        /// Get all types that can be assigned to IEntityConfiguration:
+        /// <code>typeof(IEntityConfiguration).Assembly.GetLoadableTypes(type => typeof(IEntityConfiguration).IsAssignableFrom(type))</code>
         /// </example>
         public static IList<Type> GetLoadableTypes(this Assembly assembly, Predicate<Type> predicate = null)
         {
@@ -59,6 +62,38 @@ namespace System.Reflection
             }
 
             return loadableTypes;
+        }
+        
+        /// <summary>
+        /// Gets the interfaces that "implement" the specified generic interface type from the specified assembly
+        /// </summary>
+        /// <param name="assembly">The assembly</param>
+        /// <param name="genericInterfaceTypeDefinition">The generic type definition for the base interface</param>
+        /// <returns></returns>
+        /// <example>
+        /// Get all interfaces that implement ISomeGenericInterface&lt;&gt; in <see cref="Assembly">someAssembly</see>:
+        /// <code>GetInterfacesImplementingInterface(someAssembly, typeof(IMoreSpecificGenericInterface&lt;&gt;))</code>
+        /// </example>
+        /// <exception cref="ArgumentException">Thrown if the specified type is not an interface of a generic type definition</exception>
+        public static IList<Type> GetInterfacesImplementingGenericInterface(this Assembly assembly, Type genericInterfaceTypeDefinition)
+        {
+            if (!genericInterfaceTypeDefinition.IsInterface || !genericInterfaceTypeDefinition.IsGenericTypeDefinition)
+                throw new ArgumentException("The specified type must be an interface and a generic type definition", nameof(genericInterfaceTypeDefinition));
+            
+            bool DoesTypeImplementGenericInterface(Type i)
+            {
+                if (!i.IsGenericType)
+                    return false;
+                
+                return i.IsGenericType && i.GetGenericTypeDefinition() == genericInterfaceTypeDefinition;
+            }
+
+            bool IsTypeAnInterfaceImplementingGenericInterface(Type t)
+            {
+                return t.IsInterface && t.GetInterfaces().Any(DoesTypeImplementGenericInterface);
+            }
+            
+            return assembly.GetLoadableTypes(IsTypeAnInterfaceImplementingGenericInterface);
         }
 
         /// <summary>

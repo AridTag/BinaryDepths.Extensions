@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace System
+namespace BinaryDepths.Extensions
 {
-#if NETCORE2_1
+#if (NETCORE2_1 || NETSTANDARD2_1)
     public static class SpanExtensions
     {
         public static T ToStruct<T>(this Span<byte> bytes) where T : struct
