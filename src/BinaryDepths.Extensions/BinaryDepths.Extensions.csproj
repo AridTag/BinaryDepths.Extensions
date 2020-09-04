@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Various extension methods that I like to bring from project to project.</Description>
-    <PackageLicenseUrl>https://github.com/AridTag/BinaryDepths.Extensions/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/AridTag/BinaryDepths.Extensions</RepositoryUrl>
     <Authors>Jonathan Clark</Authors>
     <Company />
